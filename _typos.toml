@@ -1,0 +1,11 @@
+[default]
+files = ["*.rs", "*.md", "*.toml", "*.yml"]
+
+[default.extend-words]
+"autortr" = "autortr"
+
+[files]
+extend-exclude = [
+    # Ignore these files
+    "*/*.md",
+]

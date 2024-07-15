@@ -1,0 +1,40 @@
+# ----------------------------------------------------------------
+
+### Get: Test rust Rocket web framework: Get
+# #[request_mapping(method="get", path="get")]
+GET http://127.0.0.1:8000/get
+
+### Post: Test rust Rocket web framework: Post
+# #[request_mapping(method="post", path="post")]
+POST http://127.0.0.1:8000/post
+Content-Type: application/json
+
+{
+    "hello": "world"
+}
+
+### Put: Test rust Rocket web framework: Put
+# #[request_mapping(method="put", path="put")]
+PUT http://127.0.0.1:8000/put
+Content-Type: application/json
+
+{
+    "hello": "world"
+}
+
+### Patch: Test rust Rocket web framework: Patch
+# #[request_mapping(method="patch", path="patch")]
+PATCH http://127.0.0.1:8000/patch
+Content-Type: application/json
+
+{
+    "hello": "world"
+}
+
+### Delete: Test rust Rocket web framework: Delete
+# #[request_mapping(method="delete", path="delete")]
+DELETE http://127.0.0.1:8000/delete
+
+### Get: Test rust Rocket web framework: Namespace
+# #[request_mapping(namespace="rocket", method="get", path="/namespace")]
+GET http://127.0.0.1:8000/rocket/namespace

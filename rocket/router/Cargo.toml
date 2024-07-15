@@ -1,0 +1,12 @@
+[package]
+name = "autortr_rocket_router"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+
+[dependencies]
+# ------------------------------------------------
+rocket = { workspace = true }
+# ------------------------------------------------
+autortr_rocket_codegen = { path = "../codegen" }
+autortr_rocket_core = { path = "../core" }

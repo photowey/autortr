@@ -1,0 +1,10 @@
+[package]
+name = "autortr_rocket_core"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+
+[dependencies]
+# ------------------------------------------------
+rocket = { workspace = true }
+lazy_static = { workspace = true }
