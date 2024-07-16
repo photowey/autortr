@@ -1,0 +1,27 @@
+[package]
+name = "autortr_rocket"
+version = "0.1.1"
+edition = "2021"
+
+authors = ["photowey <photowey@gmail.com>"]
+license = "Apache-2.0"
+
+documentation = "https://docs.rs/autortr_rocket"
+repository = "https://github.com/photowey/autortr"
+homepage = "https://github.com/photowey/autortr"
+
+description = """
+autortr-rocket is a lightweight Rust library designed for automatic route mapping in web applications, particularly tailored
+for seamless integration with the Rocket framework. It simplifies the process of defining and managing HTTP routes by
+automatically registering functions annotated with custom attributes like #[request_mapping].
+"""
+
+readme = "README.md"
+keywords = ["rocket", "web", "router"]
+# https://crates.io/category_slugs
+categories = ["web-programming"]
+
+[dependencies]
+autortr_rocket_codegen = { version = "0.1", path = "../autortr-rocket-codegen" }
+autortr_rocket_core = { version = "0.1", path = "../autortr-rocket-core" }
+autortr_rocket_router = { version = "0.1", path = "../autortr-rocket-router" }

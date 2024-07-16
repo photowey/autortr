@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// rocket/core/lib
+// rocket/autortr-rocket-core/lib
 
 // ----------------------------------------------------------------
 

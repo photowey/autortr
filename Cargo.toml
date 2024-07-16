@@ -1,23 +1,24 @@
 [workspace]
 resolver = "2"
 
-# autortr == auto router
+# autortr == auto autortr-rocket-router
 
 # @formatter:off
 members = [
-    "rocket/codegen",
-    "rocket/core",
-    "rocket/rocket",
-    "rocket/router",
+    "rocket/autortr-rocket",
+    "rocket/autortr-rocket-codegen",
+    "rocket/autortr-rocket-core",
+    "rocket/autortr-rocket-router",
     "tester/rocket/hello-rocket",
 ]
 # @formatter:on
 
 [workspace.dependencies]
-rocket = "0.5.1"
 syn = { version = "1.0", features = ["full"] }
 quote = "1.0"
 proc-macro2 = "1.0"
-inventory = "0.3"
+# ------------------------------------------------
+rocket = "0.5"
+# ------------------------------------------------
 lazy_static = "1.5"
 ctor = "0.2"
