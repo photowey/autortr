@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// rocket/codegen/lib
+// rocket/autortr-rocket-codegen/lib
 
 // ----------------------------------------------------------------
 

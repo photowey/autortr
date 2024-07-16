@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-#[doc(inline)]
-pub use autortr_rocket_codegen::*;
-#[doc(inline)]
-pub use autortr_rocket_core::*;
-#[doc(inline)]
-pub use autortr_rocket_router::*;
+// rocket/autortr-rocket/lib
+
+// ----------------------------------------------------------------
+
+pub mod prelude;
+
+// ----------------------------------------------------------------

@@ -1,0 +1,25 @@
+[package]
+name = "autortr_rocket_core"
+version = "0.1.1"
+edition = "2021"
+
+authors = ["photowey <photowey@gmail.com>"]
+license = "Apache-2.0"
+
+documentation = "https://docs.rs/autortr_rocket_core"
+repository = "https://github.com/photowey/autortr"
+homepage = "https://github.com/photowey/autortr"
+
+description = """
+The core submodule for the autortr-rocket project
+"""
+
+readme = "README.md"
+keywords = ["rocket", "web", "router"]
+# https://crates.io/category_slugs
+categories = ["web-programming"]
+
+[dependencies]
+# ------------------------------------------------
+rocket = { workspace = true }
+lazy_static = { workspace = true }

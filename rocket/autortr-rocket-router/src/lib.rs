@@ -14,36 +14,13 @@
  * limitations under the License.
  */
 
-// rocket/router/lib
+// rocket/autortr-rocket-router/lib
 
 // ----------------------------------------------------------------
 
 use rocket::{Build, Rocket};
 
 use autortr_rocket_core::{clean_route_mappings, try_acquire_route_mappings};
-
-// ----------------------------------------------------------------
-
-// Bad function now.
-// |- app cannot move?
-#[doc(hidden)]
-#[allow(dead_code)]
-fn app_fn<F>(mut init: F) -> Rocket<Build>
-where
-    F: FnMut(&mut Rocket<Build>),
-{
-    let mut app = rocket::build();
-
-    for mapping in try_acquire_route_mappings() {
-        app = app.mount(mapping.namespace, mapping.routes.clone());
-    }
-
-    init(&mut app);
-
-    clean_route_mappings();
-
-    app
-}
 
 // ----------------------------------------------------------------
 

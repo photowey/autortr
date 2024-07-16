@@ -25,15 +25,13 @@ echo "current path: $CURRENT_DIR"
 set -euo pipefail
 IFS=$'\n\t'
 
-cargo_test() {
-    echo "$ cargo test --verbose -- --show-output"
-    cargo test --verbose -- --show-output
-}
+if [ $# -eq 0 ]; then
+    echo "Usage: publish.sh <MODULE> [SUBMODULE]"
+    exit 1
+fi
 
-cargo_deny() {
-    echo "$ cargo deny check bans licenses sources"
-    cargo deny check bans licenses sources
-}
-
-cargo_test
-cargo_deny
+if [ $# -eq 1 ]; then
+    cargo publish --manifest-path "$1/autortr-$1/Cargo.toml"
+else
+    cargo publish --manifest-path "$1/autortr-$1-$2/Cargo.toml"
+fi
