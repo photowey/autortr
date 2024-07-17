@@ -18,7 +18,17 @@
 
 // ----------------------------------------------------------------
 
+use rocket::form::Form;
+use rocket::FromForm;
+
 use autortr_rocket::prelude::*;
+
+// ----------------------------------------------------------------
+
+#[derive(Debug, FromForm)]
+struct Account {
+    account: String,
+}
 
 // ----------------------------------------------------------------
 
@@ -47,7 +57,25 @@ fn delete_fn() -> &'static str {
     "Hello, delete!"
 }
 
+// ----------------------------------------------------------------
+
 #[request_mapping(namespace = "/rocket", method = "get", path = "/namespace")]
 fn namespace_fn() -> &'static str {
     "Hello, namespace!"
+}
+
+// ----------------------------------------------------------------
+
+/// @since 0.1.2
+#[request_mapping(
+    namespace = "/rocket",
+    method = "post",
+    path = "/data",
+    data = "<form>"
+)]
+fn data_fn(form: Form<Account>) -> &'static str {
+    let account: &str = &form.account;
+    println!("form.account: {}", account);
+
+    "Hello, data!"
 }

@@ -1,14 +1,14 @@
 [workspace]
 resolver = "2"
 
-# autortr == auto autortr-rocket-router
+# autortr == auto router
 
 # @formatter:off
 members = [
     "rocket/autortr-rocket",
-    "rocket/autortr-rocket-codegen",
-    "rocket/autortr-rocket-core",
-    "rocket/autortr-rocket-router",
+    "rocket/codegen",
+    "rocket/core",
+    "rocket/router",
     "tester/rocket/hello-rocket",
 ]
 # @formatter:on

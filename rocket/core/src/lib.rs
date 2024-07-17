@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// rocket/autortr-rocket-core/lib
+// rocket/core/lib
 
 // ----------------------------------------------------------------
 
@@ -35,19 +35,22 @@ pub const HEAD: &str = "head";
 pub const NAMESPACE: &str = "namespace";
 pub const METHOD: &str = "method";
 pub const PATH: &str = "path";
+pub const DATA: &str = "data";
 
 // ----------------------------------------------------------------
 
 pub const ROOT: &str = "/";
+pub const EMPTY: &str = "_";
 
 // ----------------------------------------------------------------
 
 #[derive(Clone)]
 pub struct RouteMapping {
     pub function: String,
-    pub method: String,
     pub namespace: String,
-    pub route: String,
+    pub method: String,
+    pub path: String,
+    pub data: String,
     pub routes: Vec<Route>,
 }
 

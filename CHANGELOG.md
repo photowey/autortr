@@ -4,6 +4,12 @@
 
 ### `Version`
 
+> `autortr_rocket`
+
 - `v0.1.0`
-    - Support Rocket
+    - Supported `Rocket`
     - `#[request_mapping]`
+- `v0.1.1`
+    - Change `Cargo.toml` documentation.
+- `v0.1.2`
+    - `#[request_mapping]` supported `data` attribute.
