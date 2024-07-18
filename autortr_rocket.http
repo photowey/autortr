@@ -1,8 +1,16 @@
-# ----------------------------------------------------------------
+# ---------------------------------------------------------------- #[request_mapping]
+
+#   >> (get_fn) GET /get
+#   >> (puf_fn) PUT /put
+#   >> (post_fn) POST /post
+#   >> (head_fn) HEAD /head
+#   >> (patch_fn) PATCH /patch
+#   >> (delete_fn) DELETE /delete
 
 ### Get: Test rust Rocket web framework: Get
 # #[request_mapping(method="get", path="get")]
 GET http://127.0.0.1:8000/get
+
 
 ### Post: Test rust Rocket web framework: Post
 # #[request_mapping(method="post", path="post")]
@@ -13,6 +21,7 @@ Content-Type: application/json
     "hello": "world"
 }
 
+
 ### Put: Test rust Rocket web framework: Put
 # #[request_mapping(method="put", path="put")]
 PUT http://127.0.0.1:8000/put
@@ -21,6 +30,7 @@ Content-Type: application/json
 {
     "hello": "world"
 }
+
 
 ### Patch: Test rust Rocket web framework: Patch
 # #[request_mapping(method="patch", path="patch")]
@@ -31,16 +41,112 @@ Content-Type: application/json
     "hello": "world"
 }
 
+
 ### Delete: Test rust Rocket web framework: Delete
 # #[request_mapping(method="delete", path="delete")]
 DELETE http://127.0.0.1:8000/delete
 
+
 ### Get: Test rust Rocket web framework: Namespace
 # #[request_mapping(namespace="rocket", method="get", path="/namespace")]
 GET http://127.0.0.1:8000/rocket/namespace
+
 
 ### Post: Test rust Rocket web framework: Namespace & Data
 POST http://127.0.0.1:8000/rocket/data
 Content-Type: application/x-www-form-urlencoded
 
 account = photowey
+
+
+### Head: Test rust Rocket web framework
+HEAD http://127.0.0.1:8000/head
+
+# ---------------------------------------------------------------- #[${http_method}_mapping]
+
+#   >> (http_get_mapping_fn) GET /http/get
+#   >> (http_put_mapping_fn) PUT /http/put
+#   >> (http_post_mapping_fn) POST /http/post
+#   >> (http_head_mapping_fn) HEAD /http/head
+#   >> (http_patch_mapping_fn) PATCH /http/patch
+#   >> (http_delete_mapping_fn) DELETE /http/delete
+
+### Get: Test rust Rocket web framework: #[get_mapping]
+# #[get_mapping(namepsace="http", path="/get")]
+GET http://127.0.0.1:8000/http/get
+
+
+### Post: Test rust Rocket web framework: #[post_mapping]
+# #[post_mapping(namepsace="http", path="/post")]
+POST http://127.0.0.1:8000/http/post
+Content-Type: application/x-www-form-urlencoded
+
+account = photowey
+
+
+### Put: Test rust Rocket web framework: #[put_mapping]
+# #[put_mapping(namepsace="http", path="/put")]
+PUT http://127.0.0.1:8000/http/put
+Content-Type: application/x-www-form-urlencoded
+
+account = photowey
+
+
+### Patch: Test rust Rocket web framework: #[patch_mapping]
+# #[patch_mapping(namepsace="http", path="/patch")]
+PATCH http://127.0.0.1:8000/http/patch
+Content-Type: application/x-www-form-urlencoded
+
+account = photowey
+
+
+### Delete: Test rust Rocket web framework: #[delete_mapping]
+# #[delete_mapping(namepsace="http", path="/delete")]
+DELETE http://127.0.0.1:8000/http/delete
+Content-Type: application/x-www-form-urlencoded
+
+account = photowey
+
+
+### Head: Test rust Rocket web framework: #[head_mapping]
+# #[head_mapping(namepsace="http", path="/head")]
+HEAD http://127.0.0.1:8000/http/head
+
+
+# ---------------------------------------------------------------- #[${http_method}_mapping("/${path}")]
+
+#   >> (http_get_mapping_fn) GET /http/get
+#   >> (http_put_mapping_fn) PUT /http/put
+#   >> (http_post_mapping_fn) POST /http/post
+#   >> (http_head_mapping_fn) HEAD /http/head
+#   >> (http_patch_mapping_fn) PATCH /http/patch
+#   >> (http_delete_mapping_fn) DELETE /http/delete
+
+### Get: Test rust Rocket web framework: #[get_mapping("/${path}")]
+# #[get_mapping("/path/get")]
+GET http://127.0.0.1:8000/path/get
+
+
+### Post: Test rust Rocket web framework: #[post_mapping("/${path}")]
+# #[post_mapping("/path/post")]
+POST http://127.0.0.1:8000/path/post
+
+
+### Put: Test rust Rocket web framework: #[put_mapping("/${path}")]
+# #[put_mapping("/path/put")]
+PUT http://127.0.0.1:8000/path/put
+
+
+### Patch: Test rust Rocket web framework: #[patch_mapping("/${path}")]
+# #[patch_mapping("/path/patch")]
+PATCH http://127.0.0.1:8000/path/patch
+
+
+### Delete: Test rust Rocket web framework: #[delete_mapping("/${path}")]
+# #[delete_mapping("/path/delete")]
+DELETE http://127.0.0.1:8000/path/delete
+
+
+### Head: Test rust Rocket web framework: #[head_mapping("/${path}")]
+# #[head_mapping("/path/head")]
+HEAD http://127.0.0.1:8000/path/head

@@ -23,5 +23,5 @@ categories = ["web-programming"]
 # ------------------------------------------------
 rocket = { workspace = true }
 # ------------------------------------------------
-autortr_rocket_codegen = { version = "0.1", path = "../codegen" }
+autortr_rocket_codegen = { version = "0.2", path = "../codegen" }
 autortr_rocket_core = { version = "0.1", path = "../core" }

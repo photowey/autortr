@@ -1,6 +1,6 @@
 [package]
 name = "hello_rocket"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 license = "Apache-2.0"
 
@@ -11,4 +11,4 @@ publish = false
 rocket = { workspace = true }
 ctor = { workspace = true }
 # ------------------------------------------------
-autortr_rocket = { version = "0.1", path = "../../../rocket/autortr-rocket" }
+autortr_rocket = { version = "0.2", path = "../../../rocket/autortr-rocket" }
