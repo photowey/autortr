@@ -212,32 +212,6 @@ async fn main() -> Result<(), rocket::Error> {
 
 2.4.`Next`
 
-2.4.1.`Other's macros`
-
-- `get_mapping`
-
-    - `#[request_mapping(method="get")]`
-
-- `post_mapping`
-
-    - `#[request_mapping(method="post")]`
-
-- `put_mapping`
-
-    - `#[request_mapping(method="put")]`
-
-- `patch_mapping`
-
-    - `#[request_mapping(method="patch")]`
-
-- `delete_mapping`
-
-    - `#[request_mapping(method="delete")]`
-
-- `head_mapping`
-
-    - Supported or not?
-
-2.4.2.`Other's web framework`
+2.4.1.`Other's web framework`
 
 - …
