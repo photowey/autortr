@@ -33,5 +33,5 @@ fi
 if [ $# -eq 1 ]; then
     cargo publish --manifest-path "$1/autortr-$1/Cargo.toml"
 else
-    cargo publish --manifest-path "$1/autortr-$1-$2/Cargo.toml"
+    cargo publish --manifest-path "$1/$2/Cargo.toml"
 fi

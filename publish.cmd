@@ -12,7 +12,7 @@ if "%~2"=="" (
         call cargo publish --manifest-path %1/autortr-%1/Cargo.toml
     )
 ) else (
-    call cargo publish --manifest-path %1/autortr-%1-%2/Cargo.toml
+    call cargo publish --manifest-path %1/%2/Cargo.toml
 )
 
 endlocal
