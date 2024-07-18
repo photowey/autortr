@@ -1,17 +1,17 @@
 [package]
-name = "autortr_rocket_codegen"
-version = "0.1.0"
+name = "autortr_rocket_router"
+version = "0.1.1"
 edition = "2021"
 
 authors = ["photowey <photowey@gmail.com>"]
 license = "Apache-2.0"
 
-documentation = "https://docs.rs/autortr_rocket_codegen"
+documentation = "https://docs.rs/autortr_rocket_router"
 repository = "https://github.com/photowey/autortr"
 homepage = "https://github.com/photowey/autortr"
 
 description = """
-The codegen submodule for the autortr-rocket project
+The router submodule for the autortr-rocket project
 """
 
 readme = "README.md"
@@ -21,14 +21,7 @@ categories = ["web-programming"]
 
 [dependencies]
 # ------------------------------------------------
-syn = { workspace = true }
-quote = { workspace = true }
-proc-macro2 = { workspace = true }
-# ------------------------------------------------
 rocket = { workspace = true }
-ctor = { workspace = true }
 # ------------------------------------------------
-autortr_rocket_core = { version = "0.1", path = "../autortr-rocket-core" }
-
-[lib]
-proc-macro = true
+autortr_rocket_codegen = { version = "0.1", path = "../codegen" }
+autortr_rocket_core = { version = "0.1", path = "../core" }

@@ -11,4 +11,4 @@ publish = false
 rocket = { workspace = true }
 ctor = { workspace = true }
 # ------------------------------------------------
-autortr_rocket = { path = "../../../rocket/autortr-rocket" }
+autortr_rocket = { version = "0.1", path = "../../../rocket/autortr-rocket" }

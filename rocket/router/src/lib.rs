@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// rocket/autortr-rocket-router/lib
+// rocket/router/lib
 
 // ----------------------------------------------------------------
 
@@ -53,9 +53,16 @@ use autortr_rocket_core::{clean_route_mappings, try_acquire_route_mappings};
 /// }
 /// ```
 pub fn app() -> Rocket<Build> {
-    let mut app = rocket::build();
+    __trigger_init__();
+    build()
+}
 
-    for mapping in try_acquire_route_mappings() {
+fn __trigger_init__() {}
+
+fn build() -> Rocket<Build> {
+    let mut app = rocket::build();
+    let mappings = try_acquire_route_mappings();
+    for mapping in mappings {
         app = app.mount(mapping.namespace, mapping.routes.clone());
     }
 

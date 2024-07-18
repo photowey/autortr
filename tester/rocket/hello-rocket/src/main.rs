@@ -21,6 +21,7 @@
 use rocket::fairing::AdHoc;
 
 use autortr_rocket::prelude::*;
+use hello_rocket::__trigger_init__;
 
 // ----------------------------------------------------------------
 
@@ -44,6 +45,7 @@ fn configure() -> AdHoc {
 
 #[rocket::main]
 async fn main() -> Result<(), rocket::Error> {
+    __trigger_init__();
     let app = app();
     let _ = app.attach(configure()).launch().await?;
 

@@ -38,3 +38,9 @@ DELETE http://127.0.0.1:8000/delete
 ### Get: Test rust Rocket web framework: Namespace
 # #[request_mapping(namespace="rocket", method="get", path="/namespace")]
 GET http://127.0.0.1:8000/rocket/namespace
+
+### Post: Test rust Rocket web framework: Namespace & Data
+POST http://127.0.0.1:8000/rocket/data
+Content-Type: application/x-www-form-urlencoded
+
+account = photowey

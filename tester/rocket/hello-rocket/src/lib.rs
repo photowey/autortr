@@ -18,4 +18,7 @@
 
 // ----------------------------------------------------------------
 
-mod controller;
+pub mod controller;
+
+#[doc(hidden)]
+pub use controller::__trigger_init__;
