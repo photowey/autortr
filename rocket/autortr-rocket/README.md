@@ -1,7 +1,7 @@
-# `autortr-rocket`
+# `autortr_rocket`
 
-`autortr-rocket` is a lightweight Rust library designed for automatic route mapping in web applications
-for the `Rocket` framework.. It simplifies the process of defining and managing `HTTP` routes by automatically
+`autortr_rocket` is a lightweight Rust library designed for automatic route mapping in web applications
+for the `Rocket` framework. It simplifies the process of defining and managing `HTTP` routes by automatically
 registering functions annotated with custom attributes like `#[request_mapping]`
 Or `#[get_mapping]`, `#[post_mapping]`, `#[patch_mapping]`, `#[put_mapping]`,`#[delete_mapping]` and `#[head_mapping]`.
 
