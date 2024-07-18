@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-// rocket/autortr-rocket-codegen/lib
+// rocket/codegen/lib
 
 // ----------------------------------------------------------------
 
@@ -28,7 +28,7 @@ use proc_macro::TokenStream;
 use quote::{format_ident, quote};
 use syn::{parse_macro_input, AttributeArgs, ItemFn, Meta, NestedMeta};
 
-use autortr_rocket_core::{METHOD, NAMESPACE, PATH, ROOT};
+use autortr_rocket_core::{DATA, EMPTY, METHOD, NAMESPACE, PATH, ROOT};
 
 // ----------------------------------------------------------------
 
@@ -41,7 +41,7 @@ use autortr_rocket_core::{METHOD, NAMESPACE, PATH, ROOT};
 /// # Examples
 ///
 /// ```rust
-/// use autortr_rocket_core::{register_route_mapping, RouteMapping};;
+/// use autortr_rocket_core::{register_route_mapping, RouteMapping};
 /// use autortr_rocket_codegen::request_mapping;
 /// // use autortr_rocket::prelude::*;
 ///
@@ -70,20 +70,39 @@ pub fn request_mapping(args: TokenStream, item: TokenStream) -> TokenStream {
     let function_ident = &function.sig.ident;
     let function_name = function_ident.to_string();
 
-    let (namespace, method, path) = match parse_request_mapping_args(parsed_args) {
-        Ok((n, m, p)) => (n, m, p),
+    let (namespace, method, path, data) = match parse_request_mapping_args(parsed_args) {
+        Ok((n, m, p, d)) => (n, m, p, d),
         Err(_) => panic!("Invalid arguments to `#[request_mapping]`"),
     };
 
     let namespace = namespace.unwrap_or_else(|| ROOT.to_string());
+    let data = data.unwrap_or_else(|| EMPTY.to_string());
 
     let route = match method.as_str() {
-        "get" => quote! { #[rocket::get(#path)] },
-        "post" => quote! { #[rocket::post(#path)] },
-        "put" => quote! { #[rocket::put(#path)] },
-        "patch" => quote! { #[rocket::patch(#path)] },
-        "delete" => quote! { #[rocket::delete(#path)] },
-        "head" => quote! { #[rocket::head(#path)] },
+        "get" => match data.as_str() {
+            "_" => quote! { #[rocket::get(#path)] },
+            _ => quote! { #[rocket::get(#path, data = #data)] },
+        },
+        "post" => match data.as_str() {
+            "_" => quote! { #[rocket::post(#path)] },
+            _ => quote! { #[rocket::post(#path, data = #data)] },
+        },
+        "put" => match data.as_str() {
+            "_" => quote! { #[rocket::put(#path)] },
+            _ => quote! { #[rocket::put(#path, data = #data)] },
+        },
+        "patch" => match data.as_str() {
+            "_" => quote! { #[rocket::patch(#path)] },
+            _ => quote! { #[rocket::patch(#path, data = #data)] },
+        },
+        "delete" => match data.as_str() {
+            "_" => quote! { #[rocket::delete(#path)] },
+            _ => quote! { #[rocket::delete(#path, data = #data)] },
+        },
+        "head" => match data.as_str() {
+            "_" => quote! { #[rocket::head(#path)] },
+            _ => quote! { #[rocket::head(#path, data = #data)] },
+        },
         _ => panic!("Unsupported HTTP method"),
     };
 
@@ -96,7 +115,8 @@ pub fn request_mapping(args: TokenStream, item: TokenStream) -> TokenStream {
                 function: #function_name.to_string(),
                 namespace: #namespace.to_string(),
                 method: #method.to_string(),
-                route: #path.to_string(),
+                path: #path.to_string(),
+                data: #data.to_string(),
                 routes: rocket::routes![#function_ident],
             });
         }
@@ -112,10 +132,13 @@ pub fn request_mapping(args: TokenStream, item: TokenStream) -> TokenStream {
     expanded.into()
 }
 
-fn parse_request_mapping_args(args: AttributeArgs) -> Result<(Option<String>, String, String), ()> {
+fn parse_request_mapping_args(
+    args: AttributeArgs,
+) -> Result<(Option<String>, String, String, Option<String>), ()> {
     let mut namespace = None;
     let mut method = None;
     let mut path = None;
+    let mut data = None;
 
     for arg in args {
         match arg {
@@ -132,15 +155,18 @@ fn parse_request_mapping_args(args: AttributeArgs) -> Result<(Option<String>, St
                     if let syn::Lit::Str(p) = nv.lit {
                         path = Some(p.value());
                     }
+                } else if nv.path.is_ident(DATA) {
+                    if let syn::Lit::Str(d) = nv.lit {
+                        data = Some(d.value());
+                    }
                 }
             }
             _ => return Err(()),
         }
     }
 
-    match (namespace, method, path) {
-        (Some(n), Some(m), Some(p)) => Ok((Some(n), m, p)),
-        (None, Some(m), Some(p)) => Ok((None, m, p)),
+    match (method, path) {
+        (Some(m), Some(p)) => Ok((namespace, m, p, data)),
         _ => Err(()),
     }
 }
