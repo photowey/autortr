@@ -79,3 +79,5 @@ fn data_fn(form: Form<Account>) -> &'static str {
 
     "Hello, data!"
 }
+
+pub fn __trigger_init__() {}

@@ -53,12 +53,18 @@ use autortr_rocket_core::{clean_route_mappings, try_acquire_route_mappings};
 /// }
 /// ```
 pub fn app() -> Rocket<Build> {
+    __trigger_init__();
+    build()
+}
+fn __trigger_init__() {}
+
+fn build() -> Rocket<Build> {
     let mut app = rocket::build();
     let mappings = try_acquire_route_mappings();
     for mapping in mappings {
-        println!(
-            "Report: \n function:{}, namespace:{}, method:{}, path:{}, data:{}",
-            mapping.function, mapping.namespace, mapping.method, mapping.path, mapping.function
+        eprintln!(
+            "Report: \n function: {}, namespace: {}, method: {}, path: {}, data: {}",
+            mapping.function, mapping.namespace, mapping.method, mapping.path, mapping.data
         );
         app = app.mount(mapping.namespace, mapping.routes.clone());
     }
