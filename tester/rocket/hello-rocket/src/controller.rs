@@ -30,7 +30,7 @@ struct Account {
     account: String,
 }
 
-// ----------------------------------------------------------------
+// ---------------------------------------------------------------- v0.1.0 #[request_mapping]
 
 #[request_mapping(method = "get", path = "/get")]
 fn get_fn() -> &'static str {
@@ -75,9 +75,90 @@ fn namespace_fn() -> &'static str {
 )]
 fn data_fn(form: Form<Account>) -> &'static str {
     let account: &str = &form.account;
-    println!("form.account: {}", account);
+    println!("data_fn: form.account: {}", account);
 
     "Hello, data!"
 }
+
+// ----------------------------------------------------------------
+
+#[request_mapping(method = "head", path = "/head")]
+fn head_fn() {}
+
+// ---------------------------------------------------------------- v0.2.0 #[${http_method}_mapping]
+
+#[get_mapping(namespace = "/http", path = "/get")]
+fn http_get_mapping_fn() -> &'static str {
+    "Hello, http.get mapping!"
+}
+
+#[post_mapping(namespace = "/http", path = "/post", data = "<form>")]
+fn http_post_mapping_fn(form: Form<Account>) -> &'static str {
+    let account: &str = &form.account;
+    println!("http_post_mapping_fn: form.account: {}", account);
+
+    "Hello, http.post mapping!"
+}
+
+#[put_mapping(namespace = "/http", path = "/put", data = "<form>")]
+fn http_put_mapping_fn(form: Form<Account>) -> &'static str {
+    let account: &str = &form.account;
+    println!("http_put_mapping_fn: form.account: {}", account);
+
+    "Hello, http.put mapping!"
+}
+
+#[patch_mapping(namespace = "/http", path = "/patch", data = "<form>")]
+fn http_patch_mapping_fn(form: Form<Account>) -> &'static str {
+    let account: &str = &form.account;
+    println!("http_patch_mapping_fn: form.account: {}", account);
+
+    "Hello, http.patch mapping!"
+}
+
+#[delete_mapping(namespace = "/http", path = "/delete", data = "<form>")]
+fn http_delete_mapping_fn(form: Form<Account>) -> &'static str {
+    let account: &str = &form.account;
+    println!("http_delete_mapping_fn: form.account: {}", account);
+
+    "Hello, http.delete mapping!"
+}
+
+#[head_mapping(namespace = "/http", path = "/head")]
+fn http_head_mapping_fn() {}
+
+// ---------------------------------------------------------------- v0.2.0 #[${http_method}_mapping("/path")]
+
+#[get_mapping("/path/get")]
+fn http_default_path_get_mapping_fn() -> &'static str {
+    "Hello, http.default.path.get mapping!"
+}
+
+#[post_mapping("/path/post")]
+fn http_default_path_post_mapping_fn() -> &'static str {
+    "Hello, http.default.path.post mapping!"
+}
+
+#[put_mapping("/path/put")]
+fn http_default_path_put_mapping_fn() -> &'static str {
+    "Hello, http.default.path.put mapping!"
+}
+
+#[patch_mapping("/path/patch")]
+fn http_default_path_patch_mapping_fn() -> &'static str {
+    "Hello, http.default.path.patch mapping!"
+}
+
+#[delete_mapping("/path/delete")]
+fn http_default_path_delete_mapping_fn() -> &'static str {
+    "Hello, http.default.path.delete mapping!"
+}
+
+#[head_mapping("/path/head")]
+fn http_default_path_head_mapping_fn() -> &'static str {
+    "Hello, http.default.path.head mapping!"
+}
+
+// ----------------------------------------------------------------
 
 pub fn __trigger_init__() {}

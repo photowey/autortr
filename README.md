@@ -4,15 +4,14 @@
 
 `Autortr` is a lightweight Rust library designed for automatic route mapping in web applications, particularly tailored
 for seamless integration with the `Rocket` framework. It simplifies the process of defining and managing HTTP routes by
-automatically registering functions annotated with custom attributes like `#[request_mapping]`.
+automatically registering functions annotated with custom attributes like `#[request_mapping]`
+Or `#[get_mapping]`, `#[post_mapping]`, `#[patch_mapping]`, `#[put_mapping]`,`#[delete_mapping]` and `#[head_mapping]`.
 
 ## Key Features:
 
 - Automatically registers routes based on custom attributes like `#[request_mapping]`.
 - Integrates seamlessly with Rocket's route management.
 - Simplifies routing setup and maintenance in Rust web applications.
-- Future plans include support for additional `HTTP` methods such
-  as `#[get_mapping]`, `#[post_mapping]`, `#[patch_mapping]`, `#[put_mapping]`, and `#[delete_mapping]` macros.
 
 ## 1.`Usage`
 
@@ -20,7 +19,7 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-autortr_rocket = "0.1"
+autortr_rocket = "0.2"
 
 # And
 # If necessary
@@ -30,6 +29,39 @@ ctor = "${version}"
 ```
 
 ## 2.`APIs`
+
+### 2.0.`Macros`
+
+- `#[request_mapping]`
+    - `namespace`
+    - `method`
+        - `GET`
+        - `POST`
+        - `PUT`
+        - `PATCH`
+        - `DELETE`
+        - `HEAD`
+    - `path`
+    - `data`
+        - `<form>`
+        - …
+- `get_mapping`
+    - `default`
+        - `#[get_mapping("${path}")]`
+    - `namespace`
+    - `path`
+    - `data`
+        - `<form>`
+- `post_mapping`
+    - Same as above(`get_mapping`)
+- `put_mapping`
+    - Same as above(`get_mapping`)
+- `patch_mapping`
+    - Same as above(`get_mapping`)
+- `delete_mapping`
+    - Same as above(`get_mapping`)
+- `head_mapping`
+    - Same as above(`get_mapping`)
 
 ### 2.1.`Import`
 

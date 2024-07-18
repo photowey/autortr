@@ -1,6 +1,6 @@
 [package]
 name = "autortr_rocket"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2021"
 
 authors = ["photowey <photowey@gmail.com>"]
@@ -22,6 +22,6 @@ keywords = ["rocket", "web", "router"]
 categories = ["web-programming"]
 
 [dependencies]
-autortr_rocket_codegen = { version = "0.1", path = "../codegen" }
+autortr_rocket_codegen = { version = "0.2", path = "../codegen" }
 autortr_rocket_core = { version = "0.1", path = "../core" }
 autortr_rocket_router = { version = "0.1", path = "../router" }
