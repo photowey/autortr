@@ -115,12 +115,12 @@ HEAD http://127.0.0.1:8000/http/head
 
 # ---------------------------------------------------------------- #[${http_method}_mapping("/${path}")]
 
-#   >> (http_get_mapping_fn) GET /http/get
-#   >> (http_put_mapping_fn) PUT /http/put
-#   >> (http_post_mapping_fn) POST /http/post
-#   >> (http_head_mapping_fn) HEAD /http/head
-#   >> (http_patch_mapping_fn) PATCH /http/patch
-#   >> (http_delete_mapping_fn) DELETE /http/delete
+#   >> (http_default_path_get_mapping_fn) GET /path/get
+#   >> (http_default_path_put_mapping_fn) PUT /path/put
+#   >> (http_default_path_post_mapping_fn) POST /path/post
+#   >> (http_default_path_head_mapping_fn) HEAD /path/head
+#   >> (http_default_path_patch_mapping_fn) PATCH /path/patch
+#   >> (http_default_path_delete_mapping_fn) DELETE /path/delete
 
 ### Get: Test rust Rocket web framework: #[get_mapping("/${path}")]
 # #[get_mapping("/path/get")]
